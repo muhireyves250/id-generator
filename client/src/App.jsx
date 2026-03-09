@@ -74,7 +74,7 @@ function App() {
 
     const fetchCards = async () => {
         try {
-            const res = await fetch('http://localhost:3001/api/cards');
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards`);
             if (res.ok) {
                 const data = await res.json();
                 setGeneratedCards(data);
@@ -246,7 +246,7 @@ function App() {
             if (editingIndex !== null) {
                 const cardId = generatedCards[editingIndex].id;
 
-                const res = await fetch(`http://localhost:3001/api/cards/${cardId}`, {
+                const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards/${cardId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -264,7 +264,7 @@ function App() {
                 }
                 setEditingIndex(null);
             } else {
-                const res = await fetch('http://localhost:3001/api/cards', {
+                const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -308,7 +308,7 @@ function App() {
             const cardId = generatedCards[index].id;
 
             try {
-                const res = await fetch(`http://localhost:3001/api/cards/${cardId}`, {
+                const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards/${cardId}`, {
                     method: 'DELETE'
                 });
 

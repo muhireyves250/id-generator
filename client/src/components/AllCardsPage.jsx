@@ -60,7 +60,7 @@ function AllCardsPage({ generatedCards, onBack, onEdit, onDelete }) {
         setTimeout(async () => {
             const imageData = canvas.toDataURL('image/png');
             try {
-                const response = await fetch('http://localhost:3001/api/cards/print', {
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards/print`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ image: imageData })
@@ -202,7 +202,7 @@ function AllCardsPage({ generatedCards, onBack, onEdit, onDelete }) {
             }));
 
             try {
-                const response = await fetch('http://localhost:3001/api/cards/bulk', {
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cards/bulk`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ cards: mappedData })
